@@ -1,0 +1,23 @@
+# FiveM cache/temp files
+cache/
+crashes/
+logs/
+
+# txAdmin data backups/logs
+txData/**/logs/
+txData/**/cache/
+txData/**/backups/
+
+# Secrets/configs
+.env
+*.key
+*.pem
+
+# Database files
+*.db
+*.sqlite
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
