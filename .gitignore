@@ -2,6 +2,8 @@
 cache/
 crashes/
 logs/
+artifacts/
+alpine/
 
 # txAdmin data backups/logs
 txData/**/logs/
@@ -10,6 +12,9 @@ txData/**/backups/
 
 # Secrets/configs
 .env
+server.cfg
+permissions.cfg
+database.cfg
 *.key
 *.pem
 

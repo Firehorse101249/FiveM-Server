@@ -1,0 +1,31 @@
+# FiveM server config template
+# Copy this file to server.cfg and keep secrets out of Git.
+
+endpoint_add_tcp "0.0.0.0:30120"
+endpoint_add_udp "0.0.0.0:30120"
+
+sv_hostname "My FiveM Server"
+sets sv_projectName "My FiveM Server"
+sets sv_projectDesc "Custom FiveM roleplay server"
+sets locale "en-US"
+sv_maxclients 32
+
+# Replace these locally in server.cfg.
+sv_licenseKey "CHANGE_ME"
+# set mysql_connection_string "mysql://user:password@localhost/database?charset=utf8mb4"
+
+# Core FiveM resources.
+ensure mapmanager
+ensure chat
+ensure spawnmanager
+ensure sessionmanager
+ensure basic-gamemode
+ensure hardcap
+
+# Custom resources.
+ensure fivem_core
+ensure fivem_hud
+
+# Admin permissions should live in server.cfg or permissions.cfg locally.
+# add_principal identifier.license:CHANGE_ME group.admin
+# add_ace group.admin command allow
