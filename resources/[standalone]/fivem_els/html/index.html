@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <title>ELS Controller</title>
+</head>
+<body>
+    <main id="els" class="els">
+        <header class="topbar">
+            <div>
+                <span class="eyebrow">Emergency Lighting</span>
+                <strong>ELS Control</strong>
+            </div>
+            <button id="close" class="icon-button" type="button" title="Close focus">X</button>
+        </header>
+
+        <section class="status-line">
+            <span id="vehicleStatus">No emergency vehicle</span>
+            <span id="focusStatus">F7 mouse</span>
+        </section>
+
+        <section class="control-group">
+            <span class="label">Light stage</span>
+            <div id="lightStages" class="segmented"></div>
+        </section>
+
+        <section class="control-group split">
+            <button id="sirenToggle" class="primary" type="button">Siren Off</button>
+            <button id="nextTone" class="secondary" type="button">Next Tone</button>
+        </section>
+
+        <section class="control-group">
+            <span class="label">Tone</span>
+            <div id="tones" class="tone-grid"></div>
+        </section>
+
+        <section class="control-group split">
+            <button id="manual" class="hold" type="button">Manual</button>
+            <button id="airhorn" class="hold" type="button">Airhorn</button>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
