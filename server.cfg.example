@@ -26,7 +26,9 @@ ensure hardcap
 ensure fivem_core
 ensure fivem_hud
 ensure fivem_els
+ensure fivem_vmenu
 
 # Admin permissions should live in server.cfg or permissions.cfg locally.
 # add_principal identifier.license:CHANGE_ME group.admin
 # add_ace group.admin command allow
+# add_ace group.admin fivem_vmenu.use allow
