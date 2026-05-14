@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SRP Medical</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main id="app" class="app hidden">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="mark">M</div>
+                <div>
+                    <h1>Medical</h1>
+                    <p id="providerRole">Provider</p>
+                </div>
+            </div>
+            <nav class="tabs">
+                <button class="tab active" data-tab="assessment">Assessment</button>
+                <button class="tab" data-tab="body">Body</button>
+                <button class="tab" data-tab="vitals">Vitals</button>
+                <button class="tab" data-tab="treatment">Treatment</button>
+                <button class="tab" data-tab="certs">Permissions</button>
+                <button class="tab" data-tab="history">History</button>
+                <button class="tab" data-tab="hospital">Hospital</button>
+                <button class="tab" data-tab="reports">Report</button>
+            </nav>
+            <button id="closeBtn" class="close">Close</button>
+        </aside>
+
+        <section class="workspace">
+            <header class="patient-header">
+                <div>
+                    <span class="eyebrow">Patient</span>
+                    <h2 id="patientName">Unknown Patient</h2>
+                </div>
+                <div class="status-grid">
+                    <div>
+                        <span>Stage</span>
+                        <strong id="stage">healthy</strong>
+                    </div>
+                    <div>
+                        <span>Pain</span>
+                        <strong id="pain">0</strong>
+                    </div>
+                    <div>
+                        <span>Bleeding</span>
+                        <strong id="bleeding">0</strong>
+                    </div>
+                    <div>
+                        <span>Oxygen</span>
+                        <strong id="oxygen">98%</strong>
+                    </div>
+                </div>
+            </header>
+
+            <section id="assessment" class="panel active">
+                <div class="section-head">
+                    <h3>Patient Assessment</h3>
+                    <button id="refreshBtn">Refresh</button>
+                </div>
+                <div id="assessmentTools" class="tool-grid"></div>
+                <div class="two-col">
+                    <div>
+                        <h4>Injuries Found</h4>
+                        <div id="injuryList" class="list"></div>
+                    </div>
+                    <div>
+                        <h4>Treatment Log</h4>
+                        <div id="logList" class="list compact"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="body" class="panel">
+                <div class="body-layout">
+                    <div class="body-diagram" aria-label="Clickable body diagram">
+                        <button data-body="head" class="region head">Head</button>
+                        <button data-body="neck" class="region neck">Neck</button>
+                        <button data-body="chest" class="region chest">Chest</button>
+                        <button data-body="abdomen" class="region abdomen">Abdomen</button>
+                        <button data-body="left_arm" class="region left-arm">L Arm</button>
+                        <button data-body="right_arm" class="region right-arm">R Arm</button>
+                        <button data-body="spine" class="region spine">Spine</button>
+                        <button data-body="left_leg" class="region left-leg">L Leg</button>
+                        <button data-body="right_leg" class="region right-leg">R Leg</button>
+                    </div>
+                    <div>
+                        <h3 id="selectedBodyTitle">Chest</h3>
+                        <div id="bodyInjuries" class="list"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="vitals" class="panel">
+                <h3>Vitals Monitor</h3>
+                <div class="monitor-grid">
+                    <div class="monitor heart"><span>HR</span><strong id="vHr">78</strong><small>bpm</small></div>
+                    <div class="monitor pressure"><span>BP</span><strong id="vBp">122/78</strong><small>mmHg</small></div>
+                    <div class="monitor oxygen"><span>SpO2</span><strong id="vSpo2">98</strong><small>%</small></div>
+                    <div class="monitor blood"><span>Blood</span><strong id="vBlood">100</strong><small>%</small></div>
+                    <div class="monitor conscious"><span>LOC</span><strong id="vLoc">100</strong><small>%</small></div>
+                    <div class="monitor glucose"><span>BGL</span><strong id="vGlucose">96</strong><small>mg/dL</small></div>
+                </div>
+            </section>
+
+            <section id="treatment" class="panel">
+                <div class="section-head">
+                    <h3>Treatment Menu</h3>
+                    <select id="injurySelect"></select>
+                </div>
+                <div id="recommendedActions" class="recommendations"></div>
+                <div id="treatmentTools" class="tool-grid"></div>
+            </section>
+
+            <section id="certs" class="panel">
+                <h3>Certification / Permissions</h3>
+                <div id="providerSummary" class="provider-summary"></div>
+                <div id="certList" class="cert-grid"></div>
+            </section>
+
+            <section id="history" class="panel">
+                <div class="section-head">
+                    <h3>Medical History</h3>
+                    <button id="loadHistoryBtn">Load</button>
+                </div>
+                <div id="historyList" class="list"></div>
+            </section>
+
+            <section id="hospital" class="panel">
+                <h3>Hospital Treatment</h3>
+                <div class="hospital-actions">
+                    <button data-hospital-action="admit">Admit</button>
+                    <button data-hospital-action="triage">Triage</button>
+                    <button data-hospital-action="assign_bed">Assign Bed</button>
+                    <button data-hospital-action="scan">Run Scan</button>
+                    <button id="automatedRecoveryBtn">Automated Recovery</button>
+                    <button data-hospital-action="discharge">Discharge</button>
+                </div>
+                <p class="muted">Automated recovery uses injury severity, stabilization, and configured hospital zones. Specialist roleplay is scaffolded in config for future expansion.</p>
+            </section>
+
+            <section id="reports" class="panel">
+                <h3>Patient Care Report</h3>
+                <div class="report-form">
+                    <label>Transport Destination <input id="reportDestination" placeholder="Pillbox Medical Center"></label>
+                    <label>Outcome <input id="reportOutcome" placeholder="Stable, transported, released"></label>
+                    <label>Medications <input id="reportMeds" placeholder="Saline, Narcan"></label>
+                    <label>Narrative <textarea id="reportNarrative" rows="8" placeholder="Document assessment findings, treatments, changes, and handoff."></textarea></label>
+                    <button id="saveReportBtn">Save Report</button>
+                </div>
+            </section>
+        </section>
+    </main>
+    <div id="toast" class="toast hidden"></div>
+    <script src="app.js"></script>
+</body>
+</html>

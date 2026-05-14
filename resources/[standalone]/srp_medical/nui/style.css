@@ -1,0 +1,422 @@
+:root {
+    --bg: #101316;
+    --panel: #171c20;
+    --panel-2: #20272d;
+    --line: #34404a;
+    --text: #edf3f7;
+    --muted: #9fb0bd;
+    --accent: #40b8a6;
+    --accent-2: #e7b75b;
+    --danger: #e05f5f;
+    --ok: #67c37a;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--text);
+    background: transparent;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--text);
+    border-radius: 6px;
+    min-height: 38px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+button:hover,
+button.active {
+    border-color: var(--accent);
+    background: #223632;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.app {
+    position: fixed;
+    inset: 4vh 5vw;
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    overflow: hidden;
+    border: 1px solid #3d4a55;
+    background: rgba(16, 19, 22, 0.98);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 18px;
+    border-right: 1px solid var(--line);
+    background: #13181c;
+}
+
+.brand {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.mark {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #071412;
+    font-weight: 900;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+h4 {
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: var(--muted);
+}
+
+.brand p,
+.muted,
+.eyebrow,
+.status-grid span,
+.monitor span,
+.monitor small {
+    color: var(--muted);
+}
+
+.tabs {
+    display: grid;
+    gap: 8px;
+}
+
+.tab {
+    width: 100%;
+    text-align: left;
+}
+
+.close {
+    margin-top: auto;
+}
+
+.workspace {
+    min-width: 0;
+    overflow: auto;
+    padding: 22px;
+}
+
+.patient-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(90px, 1fr));
+    gap: 10px;
+}
+
+.status-grid div,
+.monitor,
+.list-item,
+.recommendation,
+.cert,
+.provider-summary {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--panel);
+}
+
+.status-grid div {
+    padding: 10px 12px;
+}
+
+.status-grid strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 18px;
+}
+
+.panel {
+    display: none;
+    padding-top: 20px;
+}
+
+.panel.active {
+    display: block;
+}
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+}
+
+.tool-grid button {
+    min-height: 64px;
+    text-align: left;
+}
+
+.tool-grid small {
+    display: block;
+    margin-top: 5px;
+    color: var(--muted);
+}
+
+.two-col,
+.body-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.list {
+    display: grid;
+    gap: 8px;
+}
+
+.list.compact {
+    max-height: 310px;
+    overflow: auto;
+}
+
+.list-item {
+    padding: 12px;
+}
+
+.list-item strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.list-item span {
+    color: var(--muted);
+}
+
+.body-layout {
+    grid-template-columns: 360px minmax(0, 1fr);
+}
+
+.body-diagram {
+    position: relative;
+    height: 580px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #141a1f;
+}
+
+.region {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    color: #eaf5f2;
+    background: #26333a;
+    border-color: #50606b;
+}
+
+.region.has-injury {
+    background: #583238;
+    border-color: var(--danger);
+}
+
+.region.selected {
+    background: #1f4b43;
+    border-color: var(--accent);
+}
+
+.head { left: 139px; top: 28px; width: 82px; height: 70px; border-radius: 50%; }
+.neck { left: 151px; top: 105px; width: 58px; height: 38px; }
+.chest { left: 111px; top: 148px; width: 138px; height: 120px; }
+.abdomen { left: 119px; top: 274px; width: 122px; height: 112px; }
+.spine { left: 261px; top: 150px; width: 58px; height: 238px; }
+.left-arm { left: 40px; top: 158px; width: 58px; height: 210px; }
+.right-arm { right: 40px; top: 158px; width: 58px; height: 210px; }
+.left-leg { left: 111px; top: 398px; width: 58px; height: 150px; }
+.right-leg { right: 111px; top: 398px; width: 58px; height: 150px; }
+
+.monitor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(160px, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.monitor {
+    min-height: 130px;
+    padding: 16px;
+}
+
+.monitor strong {
+    display: block;
+    margin: 10px 0;
+    font-size: 42px;
+    line-height: 1;
+}
+
+.heart strong,
+.danger {
+    color: var(--danger);
+}
+
+.oxygen strong,
+.ok {
+    color: var(--ok);
+}
+
+.pressure strong,
+.blood strong {
+    color: var(--accent-2);
+}
+
+.recommendations {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.recommendation {
+    padding: 10px 12px;
+    border-left: 3px solid var(--accent);
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.cert,
+.provider-summary {
+    padding: 12px;
+}
+
+.hospital-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin: 14px 0;
+}
+
+.report-form {
+    display: grid;
+    gap: 12px;
+    max-width: 760px;
+}
+
+label {
+    display: grid;
+    gap: 6px;
+    color: var(--muted);
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: #0f1418;
+    color: var(--text);
+    padding: 10px 12px;
+}
+
+.toast {
+    position: fixed;
+    right: 5vw;
+    bottom: 5vh;
+    max-width: 360px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #11181d;
+    color: var(--text);
+}
+
+@media (max-width: 900px) {
+    .app {
+        inset: 2vh 2vw;
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .tabs,
+    .status-grid,
+    .two-col,
+    .body-layout,
+    .monitor-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .body-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .patient-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}
