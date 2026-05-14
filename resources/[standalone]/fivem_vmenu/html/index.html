@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>V Menu</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <main id="menu" class="menu hidden">
+            <aside class="sidebar">
+                <div class="brand">
+                    <span class="brand-mark">V</span>
+                    <span>
+                        <strong>V Menu</strong>
+                        <small>Custom controls</small>
+                    </span>
+                </div>
+                <button class="tab active" data-tab="player">Player</button>
+                <button class="tab" data-tab="vehicles">Vehicles</button>
+                <button class="tab" data-tab="mods">Vehicle Mods</button>
+            </aside>
+
+            <section class="panel active" id="player">
+                <header>
+                    <h1>Player</h1>
+                    <button id="close" class="icon-button" title="Close">X</button>
+                </header>
+
+                <div class="toolbar">
+                    <button data-player-action="heal">Heal</button>
+                    <button data-player-action="armor">Armor</button>
+                    <button data-player-action="clearBlood">Clean Up</button>
+                    <button data-player-action="defaultClothes">Reset Clothes</button>
+                </div>
+
+                <h2>Models</h2>
+                <div id="playerModels" class="grid"></div>
+
+                <h2>Outfits</h2>
+                <div id="outfits" class="grid"></div>
+
+                <h2>Clothing</h2>
+                <div id="components" class="component-list"></div>
+            </section>
+
+            <section class="panel" id="vehicles">
+                <header>
+                    <h1>Vehicles</h1>
+                </header>
+
+                <div id="vehicleCategories"></div>
+            </section>
+
+            <section class="panel" id="mods">
+                <header>
+                    <h1>Vehicle Mods</h1>
+                </header>
+
+                <div class="toolbar">
+                    <button data-vehicle-action="repair">Repair</button>
+                    <button data-vehicle-action="clean">Clean</button>
+                    <button data-vehicle-action="maxMods">Max Mods</button>
+                    <button data-vehicle-action="flip">Flip</button>
+                    <button class="danger" data-vehicle-action="delete">Delete</button>
+                </div>
+
+                <h2>Paint</h2>
+                <div id="colors" class="grid"></div>
+
+                <h2>Extras</h2>
+                <div id="extras" class="extras"></div>
+            </section>
+        </main>
+
+        <script src="app.js"></script>
+    </body>
+</html>
