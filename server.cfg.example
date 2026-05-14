@@ -1,36 +1,62 @@
-# FiveM server config template
-# Copy this file to server.cfg and keep secrets out of Git.
+# txAdmin QBCore / G-Portal server config template
+# Copy this file to server.cfg locally, then replace CHANGE_ME values.
+# Do not commit real license keys, DB passwords, RCON passwords, or Tebex secrets.
 
 endpoint_add_tcp "0.0.0.0:30120"
 endpoint_add_udp "0.0.0.0:30120"
+sv_maxclients 20
 
-sv_hostname "My FiveM Server"
-sets sv_projectName "My FiveM Server"
-sets sv_projectDesc "Custom FiveM roleplay server"
-sets locale "en-US"
-sv_maxclients 32
+set steam_webApiKey "none"
+set resources_useSystemChat true
+set mysql_connection_string "mysql://CHANGE_ME:CHANGE_ME@CHANGE_ME:3306/CHANGE_ME"
+set mysql_ui true
 
-# Replace these locally in server.cfg.
+## txAdmin manages OneSync from the txAdmin settings page.
+# set onesync on
+
+sets tags "default, deployer, qbcore, qb-core"
+sets sv_projectName "[QBCore Framework] SentinelRP"
+sets sv_projectDesc "An advanced FiveM RP framework including jobs, gangs, housing & more!"
+sets locale "root-AQ"
+
 sv_licenseKey "CHANGE_ME"
-# set mysql_connection_string "mysql://user:password@localhost/database?charset=utf8mb4"
+sv_hostname "Sentinel RP"
+load_server_icon myLogo.png
+sv_enforceGameBuild 3095
 
-# Core FiveM resources.
+setr voice_useNativeAudio true
+setr voice_useSendingRangeOnly true
+setr voice_defaultCycle "GRAVE"
+setr voice_defaultVolume 0.3
+setr voice_enableRadioAnim 1
+setr voice_syncData 1
+setr qb_locale "en"
+setr UseTarget false
+
+ensure oxmysql
 ensure mapmanager
 ensure chat
 ensure spawnmanager
 ensure sessionmanager
 ensure basic-gamemode
 ensure hardcap
-
-# Custom resources.
-ensure fivem_core
-ensure fivem_hud
-ensure fivem_els
+ensure baseevents
+ensure qb-core
 ensure fivem_vmenu
-ensure srp_medical
+ensure fivem_els
+ensure [qb]
+ensure [standalone]
+ensure [voice]
+ensure [defaultmaps]
 
-# Admin permissions should live in server.cfg or permissions.cfg locally.
-# add_principal identifier.license:CHANGE_ME group.admin
-# add_ace group.admin command allow
-# add_ace group.admin fivem_vmenu.use allow
-# add_ace group.admin srp_medical.admin allow
+add_ace group.admin command allow
+add_ace group.admin srp_medical.admin allow
+add_ace resource.qb-core command allow
+add_ace qbcore.god command allow
+add_principal qbcore.god group.admin
+add_principal qbcore.god qbcore.admin
+add_principal qbcore.admin qbcore.mod
+
+rcon_password "CHANGE_ME"
+sv_scriptHookAllowed 0
+sv_tebexSecret ""

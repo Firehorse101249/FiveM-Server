@@ -9,6 +9,7 @@ alpine/
 txData/**/logs/
 txData/**/cache/
 txData/**/backups/
+data/imports/
 
 # Secrets/configs
 .env
